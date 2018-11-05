@@ -1,0 +1,27 @@
+{
+  "name": "simon-menu-server",
+  "version": "1.0.0",
+  "description": "proxy server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/index.js",
+    "nodemon": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grub-Reactor/simon-menu-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grub-Reactor/simon-menu-server/issues"
+  },
+  "homepage": "https://github.com/Grub-Reactor/simon-menu-server#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
