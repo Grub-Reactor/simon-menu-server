@@ -6,6 +6,30 @@ const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 
+app.get('/:id', (req, res) => {
+  const number = req.params.id;
+  res.redirect(`http://localhost:3001/grub-reactor/${number}/`);
+});
+
+// app.get('', (req, res) => {
+//   const {number} = req.params;
+//   res.redirect(``);
+// });
+// app.get('', (req, res) => {
+//   const {number} = req.params;
+//   res.redirect(``);
+// });
+
+
+// app.get('', (req, res) => {
+//   const {number} = req.params;
+//   res.redirect(``);
+// });
+// app.get('', (req, res) => {
+//   const {number} = req.params;
+//   res.redirect(``);
+//});
+
 
 
 
