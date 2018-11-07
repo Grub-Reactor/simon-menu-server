@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Grub-Reactor/simon-menu-server#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"

@@ -1,25 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Grub-Reactor</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-</head>
-<body>
-  <div class='body'>
-    <div class='bodybody'>
-      <div class='top'>
-        <div id='Info'></div>
-      </div>
-      <div class='bottom'>
-        <div id='app'></div>
-      </div>
-    </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <title>FEC Demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="CountDown"></div>
+    <div id="Related"></div>
+    <div id="Reviews"></div>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./menuBundle.js"></script>
+    <!-- <script src="http://localhost:3002/app.js"></script>
+    <script src="http://localhost:3003/app.js"></script>
+    <script src="http://localhost:3004/app.js"></script> -->
+    <!-- see: https://reactjs.org/docs/react-without-jsx.html -->
 
-    <div class='side'>
-      <div id=''></div>
-    </div>
-  </div>
-</body>
-  <script src='http://localhost:3001/grub-reactor/0/bundle.js'>
-  </script>
+    <script>
+      ReactDOM.render(
+        React.createElement(Menu),
+        document.getElementById('app')
+      );
+      // ReactDOM.render(
+      //   React.createElement(CountDown),
+      //   document.getElementById('CountDown')
+      // );
+      // ReactDOM.render(
+      //   React.createElement(Related),
+      //   document.getElementById('Related')
+      // );
+      // ReactDOM.render(
+      //   React.createElement(Reviews),
+      //   document.getElementById('Reviews')
+      // );
+    </script>
+  </body>
 </html>
