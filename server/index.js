@@ -1,44 +1,46 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const app = express();
-const request = require('request');
-const http = require('http');
+
+
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+const express    = require('express');
+const cors = require('cors');
+const app = express();
 
-app.use(bodyParser.urlencoded({extended:true}));
+
+
+const httpProxy  = require('http-proxy');
+const proxy   = httpProxy.createProxyServer();
+const PORT = 3000;
+app.use(cors());
+
+const chris_banner = 'http://ec2-54-193-75-21.us-west-1.compute.amazonaws.com';
+const simon_menu = 'http://ec2-52-43-228-173.us-west-2.compute.amazonaws.com';
+const ash_carasul = 'http://ec2-13-57-220-156.us-west-1.compute.amazonaws.com';
+var emily_review = 'http://ec2-34-221-253-114.us-west-2.compute.amazonaws.com';
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/grubhub/:rest_id', express.static('public'));
 
-app.use(morgan('dev'));
-app.use('/:id', express.static(path.join(__dirname, '../', 'public')));
-app.get(`/grub-reactor/:menuId/menu`, (req, res) => {
-  console.log('hi');
-  var menuInfo = {
-    host: 'localhost',
-    port: 3001,
-    path: `/grub-reactor/${req.params.menuId}/menu`,
-    method: 'GET',
-    headers: {
-      accept: 'application/json'
-    }
-  };
-  var menuInfo = http.request(menuInfo, (result) => {
-    result.on('data', (data) => {
-      res.status(200).send(data);
-    }).on('error', (err) => {
-      res.status(500).send("menu not found");
-    });
-  });
-  menuInfo.end();
+app.get("/restaurants/banners/:rest_id", function(req, res) {
+
+  proxy.web(req, res, {target: chris_banner});
 });
 
+app.get("/grub-reactor/:rest_Id/menu/*", function(req, res) {
 
+  proxy.web(req, res, {target: simon_menu});
+});
 
+app.all("/restaurant/:id", function(req, res) {
 
+  proxy.web(req, res, {target: ash_carasul});
+});
 
+app.all("/grubhub/:rest_id/allreviews/*", function(req, res) {
 
+  proxy.web(req, res, {target: emily_review});
+});
 
-app.listen(port, () => {
-  console.log(`server running at: http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`server listening on...  ${PORT}`);
 });

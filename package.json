@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/Grub-Reactor/simon-menu-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
+    "http": "0.0.0",
+    "http-proxy": "^1.17.0",
     "morgan": "^1.9.1",
+    "path": "^0.12.7",
     "request": "^2.88.0"
   },
   "devDependencies": {
